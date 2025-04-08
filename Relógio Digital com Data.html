@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/Users/Usuario/Downloads/index.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Relógio Digital com Data</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    #data {
+      font-size: 24px;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    #relogio {
+      font-size: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.5);
+      transition: all 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="data">Terça-feira, 08 de Abril de 2025</div>
+  <div id="relogio">18:11:18</div>
+
+  <script>
+    function atualizarRelogio() {
+      const agora = new Date();
+
+      // Pegando horário
+      let horas = agora.getHours().toString().padStart(2, '0');
+      let minutos = agora.getMinutes().toString().padStart(2, '0');
+      let segundos = agora.getSeconds().toString().padStart(2, '0');
+      document.getElementById('relogio').textContent = `${horas}:${minutos}:${segundos}`;
+
+      // Pegando data
+      const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+      const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+      
+      const diaSemana = diasSemana[agora.getDay()];
+      const dia = agora.getDate().toString().padStart(2, '0');
+      const mes = meses[agora.getMonth()];
+      const ano = agora.getFullYear();
+
+      document.getElementById('data').textContent = `${diaSemana}, ${dia} de ${mes} de ${ano}`;
+    }
+
+    setInterval(atualizarRelogio, 1000);
+    atualizarRelogio();
+  </script>
+
+
+
+</body></html>
